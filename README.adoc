@@ -1,3 +1,14 @@
 = Vert.x MySQL PostgreSQL client
 
-Module removed in Vert.x 4.
+== Deprecated
+
+WARNING: This client is deprecated, use the https://github.com/eclipse-vertx/vertx-sql-client[Reactive SQL Client] instead.
+
+There are two types of MySQL/PostgreSQL-clients:
+
+- (Soon to be legacy) Scala based version
+- (Soon to be may mainline) Kotlin based version
+
+Scala based version lives in link:/vertx-mysql-postgresql-client-scala/README.adoc[vertx-mysql-postgresql-client-scala].
+
+New Kotlin based version lives in link:/vertx-mysql-postgresql-client-jasync/README.adoc[vertx-mysql-postgresql-client-jasync].
