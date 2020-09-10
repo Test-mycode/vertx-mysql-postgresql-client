@@ -22,9 +22,13 @@ import com.github.jasync.sql.db.util.ExecutorServiceUtils;
 import io.netty.channel.EventLoopGroup;
 import io.vertx.core.*;
 import io.vertx.core.json.JsonArray;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
+import org.joda.time.LocalTime;
 
 import java.math.BigDecimal;
-import java.time.*;
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
@@ -144,6 +148,8 @@ public final class ConversionUtils {
     } else if (value instanceof LocalDate) {
       array.add(value.toString());
     } else if (value instanceof LocalTime) {
+      array.add(value.toString());
+    } else if (value instanceof DateTime) {
       array.add(value.toString());
     } else if (value instanceof Duration) {
       Duration duration = (Duration)value;
