@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>vertx-mysql-postgresql-client-jasync</artifactId>
-
+  <version>3.9.2</version>
   <name>Vert.x MySQL/PostgreSQL Client based on jasync-sql/Kotlin</name>
 
   <properties>
