@@ -29,6 +29,7 @@ import org.joda.time.LocalTime;
 
 import java.math.BigDecimal;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
@@ -150,7 +151,7 @@ public final class ConversionUtils {
     } else if (value instanceof LocalTime) {
       array.add(value.toString());
     } else if (value instanceof DateTime) {
-      array.add(value.toString());
+      array.add(Instant.ofEpochMilli(((DateTime) value).getMillis()));
     } else if (value instanceof Duration) {
       Duration duration = (Duration)value;
       array.add(String.format("%02d:%02d:%02d.%03d", duration.toHours() % 24, duration.toMinutes() % 60, duration.getSeconds() % 60, duration.toMillis() % 1000));
