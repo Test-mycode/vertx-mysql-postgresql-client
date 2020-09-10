@@ -1,14 +1,20 @@
 = Vert.x MySQL PostgreSQL client
 
-== Deprecated
+image:https://travis-ci.org/vert-x3/vertx-mysql-postgresql-client.svg?branch=master["Build Status", link="https://travis-ci.org/vert-x3/vertx-mysql-postgresql-client"]
 
-WARNING: This client is deprecated, use the https://github.com/eclipse-vertx/vertx-sql-client[Reactive SQL Client] instead.
+This Vert.x client uses the https://github.com/jasync-sql/jasync-sql[JAsync driver] to support
+a fully async client for MySQL and PostgreSQL.
 
-There are two types of MySQL/PostgreSQL-clients:
+Please see the in source asciidoc documentation or the main documentation on the web-site for a full description:
 
-- (Soon to be legacy) Scala based version
-- (Soon to be may mainline) Kotlin based version
+* http://vertx.io/docs/vertx-mysql-postgresql-client/java/[Java documentation]
+* http://vertx.io/docs/vertx-mysql-postgresql-client/js/[JavaScript documentation]
+* http://vertx.io/docs/vertx-mysql-postgresql-client/kotlin/[Kotlin documentation]
+* http://vertx.io/docs/vertx-mysql-postgresql-client/groovy/[Groovy documentation]
+* http://vertx.io/docs/vertx-mysql-postgresql-client/ruby/[Ruby documentation]
 
-Scala based version lives in link:/vertx-mysql-postgresql-client-scala/README.adoc[vertx-mysql-postgresql-client-scala].
+== Running test suite with Docker
 
-New Kotlin based version lives in link:/vertx-mysql-postgresql-client-jasync/README.adoc[vertx-mysql-postgresql-client-jasync].
+The test suite is based on testcontainers and will spawn separate instances for the different tests.
+
+NOTE: Running test with Docker requires enabling the profile as Docker isn't available on Cloudbees: `mvn clean install -Ddocker`
