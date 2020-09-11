@@ -75,17 +75,18 @@ public abstract class AsyncSQLConnectionImpl implements SQLConnection {
 
   @Override
   public SQLConnection setAutoCommit(boolean autoCommit, Handler<AsyncResult<Void>> handler) {
-    Future<Void> fut;
+    Future<Void> fut= Future.succeededFuture();
 
     synchronized (this) {
-      if (inTransaction && autoCommit) {
-        inTransaction = false;
-        fut = ConversionUtils.completableFutureToVertxVoid(connection.sendQuery("COMMIT"), vertx);
-      } else if(!autoCommit&&this.options!=null) {
+      if (inTransaction) {
+        if (autoCommit) {
+          inTransaction = false;
+          fut = ConversionUtils.completableFutureToVertxVoid(connection.sendQuery("COMMIT"), vertx);
+        } else if (this.options != null) {
           fut = Promise.<Void>promise().future();
           this.setTransactionIsolation(this.options.getTransactionIsolation(), fut);
-      }else
-        fut = Future.succeededFuture();
+        }
+      }
       inAutoCommit = autoCommit;
     }
 
