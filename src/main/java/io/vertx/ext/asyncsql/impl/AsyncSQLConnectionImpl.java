@@ -81,9 +81,11 @@ public abstract class AsyncSQLConnectionImpl implements SQLConnection {
       if (inTransaction && autoCommit) {
         inTransaction = false;
         fut = ConversionUtils.completableFutureToVertxVoid(connection.sendQuery("COMMIT"), vertx);
-      } else {
+      } else if(!autoCommit&&this.options!=null) {
+          fut = Promise.<Void>promise().future();
+          this.setTransactionIsolation(this.options.getTransactionIsolation(), fut);
+      }else
         fut = Future.succeededFuture();
-      }
       inAutoCommit = autoCommit;
     }
 
@@ -278,7 +280,7 @@ public abstract class AsyncSQLConnectionImpl implements SQLConnection {
         handler.handle(Future.failedFuture(
             new IllegalStateException("Not in transaction currently")));
       } else {
-        handler.handle(Future.succeededFuture());
+          handler.handle(Future.succeededFuture());
       }
     }
     return this;
