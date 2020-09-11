@@ -50,12 +50,12 @@ public interface MySQLClient extends AsyncSQLClient {
   /**
    * The default database.
    */
-  String DEFAULT_DATABASE = "testdb";
+  String DEFAULT_DATABASE = "mysql";
 
   /**
    * The default database user.
    */
-  String DEFAULT_USER = "vertx";
+  String DEFAULT_USER = "root";
 
   /**
    * The default database password.

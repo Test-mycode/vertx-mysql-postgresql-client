@@ -42,6 +42,7 @@ public abstract class AsyncSQLConnectionImpl implements SQLConnection {
   private volatile boolean inTransaction = false;
   private boolean inAutoCommit = true;
 
+  private SQLOptions options;
   private final Connection connection;
   private final AsyncConnectionPool pool;
 
@@ -68,7 +69,8 @@ public abstract class AsyncSQLConnectionImpl implements SQLConnection {
 
   @Override
   public SQLConnection setOptions(SQLOptions options) {
-    throw new UnsupportedOperationException("Not implemented");
+    this.options = options;
+    return this;
   }
 
   @Override

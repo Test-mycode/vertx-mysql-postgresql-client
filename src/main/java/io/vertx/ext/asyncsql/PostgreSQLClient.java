@@ -50,12 +50,12 @@ public interface PostgreSQLClient extends AsyncSQLClient {
   /**
    * The default database name.
    */
-  String DEFAULT_DATABASE = "testdb";
+  String DEFAULT_DATABASE = "postgres";
 
   /**
    * The default database user.
    */
-  String DEFAULT_USER = "vertx";
+  String DEFAULT_USER = "postgres";
 
   /**
    * The default user password.
