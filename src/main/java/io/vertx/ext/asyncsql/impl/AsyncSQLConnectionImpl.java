@@ -59,12 +59,24 @@ public abstract class AsyncSQLConnectionImpl implements SQLConnection {
 
   @Override
   public SQLConnection call(String sql, Handler<AsyncResult<ResultSet>> resultHandler) {
-    throw new UnsupportedOperationException("Not implemented");
+    beginTransactionIfNeeded(v -> ConversionUtils.connectCompletableFutureWithHandler(
+            connection.sendQuery(sql),
+            vertx,
+            handleAsyncQueryResultToResultSet(resultHandler)));
+    return this;
   }
 
   @Override
   public SQLConnection callWithParams(String sql, JsonArray params, JsonArray outputs, Handler<AsyncResult<ResultSet>> resultHandler) {
-    throw new UnsupportedOperationException("Not implemented");
+    if(!outputs.isEmpty())
+      throw new UnsupportedOperationException("unsupported output params");
+
+    beginTransactionIfNeeded(v -> ConversionUtils.connectCompletableFutureWithHandler(
+            connection.sendPreparedStatement(sql, ConversionUtils.WrapList(params)),
+            vertx,
+            handleAsyncQueryResultToResultSet(resultHandler)));
+
+    return this;
   }
 
   @Override
