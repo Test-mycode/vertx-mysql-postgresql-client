@@ -104,13 +104,11 @@ public abstract class AsyncSQLConnectionImpl implements SQLConnection {
 
     fut.onComplete(handler);
     return this;
-
   }
 
   @Override
   public SQLConnection execute(String sql, Handler<AsyncResult<Void>> handler) {
     beginTransactionIfNeeded(v -> ConversionUtils.connectCompletableFutureWithVoidHandler(connection.sendQuery(sql), vertx, handler));
-
     return this;
   }
 
@@ -239,7 +237,8 @@ public abstract class AsyncSQLConnectionImpl implements SQLConnection {
 
   @Override
   public SQLConnection getTransactionIsolation(Handler<AsyncResult<TransactionIsolation>> handler) {
-    throw new UnsupportedOperationException("Not implemented");
+    handler.handle(Future.succeededFuture(this.options.getTransactionIsolation()));
+    return this;
   }
 
   @Override
