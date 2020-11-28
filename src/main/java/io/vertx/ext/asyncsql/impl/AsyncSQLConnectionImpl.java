@@ -243,21 +243,16 @@ public abstract class AsyncSQLConnectionImpl implements SQLConnection {
 
   @Override
   public SQLConnection batch(List<String> sqlStatements, Handler<AsyncResult<List<Integer>>> handler) {
-    // This should be simple in postgres, since it is just append the query separator after each query and send as a big
-    // sql statement, however it does not seem to work on mysql
     throw new UnsupportedOperationException("Not implemented");
   }
 
   @Override
   public SQLConnection batchWithParams(String sqlStatement, List<JsonArray> args, Handler<AsyncResult<List<Integer>>> handler) {
-    // This should be simple in postgres, since it is just append the query separator after each query and send as a big
-    // sql statement, however it does not seem to work on mysql
     throw new UnsupportedOperationException("Not implemented");
   }
 
   @Override
   public SQLConnection batchCallableWithParams(String sqlStatement, List<JsonArray> inArgs, List<JsonArray> outArgs, Handler<AsyncResult<List<Integer>>> handler) {
-    // No idea how to implement this
     throw new UnsupportedOperationException("Not implemented");
   }
 
