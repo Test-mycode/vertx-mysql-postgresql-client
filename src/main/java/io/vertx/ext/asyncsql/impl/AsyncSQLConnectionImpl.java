@@ -95,8 +95,9 @@ public abstract class AsyncSQLConnectionImpl implements SQLConnection {
           inTransaction = false;
           fut = ConversionUtils.completableFutureToVertxVoid(connection.sendQuery("COMMIT"), vertx);
         } else if (this.options != null) {
-          fut = Promise.<Void>promise().future();
-          this.setTransactionIsolation(this.options.getTransactionIsolation(), fut);
+          Promise<Void> promise = Promise.promise();
+          fut = promise.future();
+          this.setTransactionIsolation(this.options.getTransactionIsolation(), promise);
         }
       }
       inAutoCommit = autoCommit;

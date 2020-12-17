@@ -9,12 +9,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>vertx-mysql-postgresql-client-jasync</artifactId>
-  <version>3.9.4</version>
+  <version>3.9.5</version>
   <name>Vert.x MySQL/PostgreSQL Client based on jasync-sql/Kotlin</name>
 
   <properties>
-    <stack.version>3.9.4</stack.version>
-    <asyncdriver.version>1.1.4</asyncdriver.version>
+    <stack.version>3.9.5</stack.version>
+    <asyncdriver.version>1.1.5</asyncdriver.version>
     <doc.skip>false</doc.skip>
   </properties>
 
